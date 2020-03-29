@@ -8,9 +8,6 @@ import guru.springframework.sfgpetclinic.sfgpetclinic.services.OwnerService;
 import guru.springframework.sfgpetclinic.sfgpetclinic.services.PetService;
 import guru.springframework.sfgpetclinic.sfgpetclinic.services.PetTypeService;
 import guru.springframework.sfgpetclinic.sfgpetclinic.services.VetService;
-import guru.springframework.sfgpetclinic.sfgpetclinic.services.map.OwnerServiceMap;
-import guru.springframework.sfgpetclinic.sfgpetclinic.services.map.PetServiceMap;
-import guru.springframework.sfgpetclinic.sfgpetclinic.services.map.VetServiceMap;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -44,25 +41,47 @@ public class DataLoader implements CommandLineRunner {
 
 
         Owner owner =new Owner();
-            owner.setFirstName("Ow_James");
-            owner.setLastName("Selva");
+        owner.setFirstName("Ow_James");
+        owner.setLastName("Selva");
+        owner.setAddress("123 Street 1");
+        owner.setCity("LosVegas");
+        owner.setTelephone("12321321");
+
+        Pet ownerPet=new Pet();
+        ownerPet.setPetType(savedDogType);
+        ownerPet.setOwner(owner);
+        ownerPet.setName("Puppy");
+        ownerPet.setBirthDate(LocalDate.now());
+
+        owner.getPetSet().add(ownerPet);
         ownerService.save(owner);
 
         Owner owner2 =new Owner();
-            owner2.setFirstName("James");
-            owner2.setLastName("Selva");
+        owner2.setFirstName("James");
+        owner2.setLastName("Selva");
+        owner2.setAddress("123 Street 2");
+        owner2.setCity("Newyork");
+        owner2.setTelephone("453423423");
+
+        Pet owner2Cat=new Pet();
+        owner2Cat.setPetType(savedCatType);
+        owner2Cat.setOwner(owner2);
+        owner2Cat.setName("fluffy");
+        owner2Cat.setBirthDate(LocalDate.now());
+        owner2.getPetSet().add(owner2Cat);
+
         ownerService.save(owner2);
 
         System.out.println("Owners loaded");
 
         Vet vet =new Vet();
-            vet.setFirstName("Sam");
-            vet.setLastName("Axe");
+        vet.setFirstName("Sam");
+        vet.setLastName("Axe");
         vetService.save(vet);
 
         Vet vet2 =new Vet();
-            vet2.setFirstName("Jessie");
-            vet2.setLastName("Porter");
+        vet2.setFirstName("Jessie");
+        vet2.setLastName("Porter");
         vetService.save(vet2);
 
         System.out.println("Vets loaded");
