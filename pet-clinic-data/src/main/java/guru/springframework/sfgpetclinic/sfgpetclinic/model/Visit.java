@@ -10,7 +10,7 @@ public class Visit extends BaseEntity {
     @Column(name="date")
     private LocalDate localDate;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "pet_id")
     private Pet pet;
 
