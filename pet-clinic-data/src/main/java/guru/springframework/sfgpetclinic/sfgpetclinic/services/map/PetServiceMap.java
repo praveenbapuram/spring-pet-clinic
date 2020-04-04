@@ -3,11 +3,13 @@ package guru.springframework.sfgpetclinic.sfgpetclinic.services.map;
 import guru.springframework.sfgpetclinic.sfgpetclinic.model.Pet;
 import guru.springframework.sfgpetclinic.sfgpetclinic.services.CrudService;
 import guru.springframework.sfgpetclinic.sfgpetclinic.services.PetService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
+@Profile({"default","map"})
 public class PetServiceMap extends AbstractMapService<Pet,Long> implements PetService {
 
 
