@@ -1,6 +1,9 @@
 package guru.springframework.sfgpetclinic.sfgpetclinic.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.time.LocalDate;
+
 
 public class Visit extends BaseEntity {
     private LocalDate localDate;
