@@ -69,8 +69,14 @@ public class OwnerServiceMap extends AbstractMapService<Owner,Long> implements O
         super.deleteById(id);
     }
 
+    /*A Stream in Java can be defined as a sequence of elements from a source that supports aggregate operations on them. The source here refers to a Collections or Arrays who provides data to a Stream. Stream keeps the ordering of the data as it is in the source. ... This helps us to create a chain of stream operations.*/
     @Override
-    public Owner findByLastName(String name) {
-        return null;
+    public Owner findByLastName(String lastName) {
+        return this.findAll()
+                .stream()
+                .filter(owner -> owner.getLastName().equalsIgnoreCase(lastName))
+                .findFirst()
+                .orElse(null)
+                ;
     }
 }
