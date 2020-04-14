@@ -66,7 +66,7 @@ class OwnerSDJpaServiceTest {
     @Test
     void findById() {
         when(ownerRepository.findById(anyLong())).thenReturn(Optional.of(owner));
-        assertEquals(owner.getId(),service.findById(10L));
+        assertEquals(owner.getId(),service.findById(10L).getId());
 
     }
 
